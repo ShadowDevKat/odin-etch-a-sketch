@@ -11,11 +11,19 @@ function createDiv(parent, cssClass) {
 }
 
 function createGrid(container, size) {
+    clearGrid(container);
+
     for (let x = 0; x < size; x++) {
         const row = createDiv(container, 'row');
         for (let y = 0; y < size; y++) {
             createDiv(row, 'cell');
         }
+    }
+}
+
+function clearGrid(container) {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
     }
 }
 
