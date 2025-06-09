@@ -2,32 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etch-a-Sketch</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Etch-a-Sketch</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="./script.js" defer></script>
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="header">
-            <h1 class="heading">Etch-a-Sketch</h1>
-        </div>
-        <div class="content-container">
-            <div class="settings-container">
-                <!-- Controls go here -->
-                <!-- color -->
-                <!-- rainbow -->
-                <!-- eraser -->
-                <!-- clear -->
-                <!-- grid -->
-            </div>
-            <div id="grid-container">
-                <!-- grid for drawing goes here -->
-            </div>
-        </div>
+  <div class="main-container">
+    <div class="header">
+      <h1 class="heading">Etch-a-Sketch</h1>
     </div>
+    <div class="content-container">
+      <div class="settings-container">
+        <div id="current-color"></div>
+        <button id="rainbow-btn">
+          Rainbow
+        </button>
+        <button id="eraser-btn">
+          Eraser
+        </button>
+        <button id="clear-btn">
+          Clear
+        </button>
+        <button id="grid-btn">
+          Set Grid Size
+        </button>
+        <div id="grid-size">
+          Current Grid: 16 x 16
+        </div>
+      </div>
+      <div id="grid-container">
+        <!-- grid for drawing goes here -->
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

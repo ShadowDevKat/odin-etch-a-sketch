@@ -1,66 +1,106 @@
+* {
+  font-family: Roboto, sans-serif;
+}
+
 body {
-    height: 100vh;
-    margin: 0;
-    font-family: Roboto, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 16px;
-    background-color: lightgrey;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  background-color: lightgrey;
 }
 
 .main-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 42px;
+  padding: 0 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 42px;
 }
 
-.heading { 
-    font-size: 56px;
-    margin: 0;
-    padding: 12px;
-    text-align: center;
+.header {
+  width: 100%;
+}
+
+.heading {
+  font-size: 56px;
+  margin: 0;
+  padding: 12px;
+  text-align: center;
 }
 
 .content-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70%;
-    gap: 42px;
-    border: none;
+  width: 100%;
+  height: 70%;
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  gap: 42px;
+  border: none;
 }
 
 .settings-container {
-    flex: auto;
-    width: 250px;
-    height: 500px;
+  width: 250px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  box-shadow: -4px 4px 12px gray;
+}
+
+#current-color {
+  height: 100px;
+  width: 100px;
+  background-color: black;
+}
+
+.settings-container>button {
+  font-size: medium;
+  font-weight: 400;
+  height: 10%;
+  width: 50%;
+  background-color: rgb(242, 255, 224);
+  border: 2px solid lightcyan;
+  box-shadow: -4px 4px 12px gray;
+}
+
+.settings-container>button:hover {
+  opacity: 75%;
+}
+
+#grid-size {
+  font-size: large;
+  font-weight: 500;
+  padding: 10px 4px;
+  text-align: center;
 }
 
 #grid-container {
-    height: 500px;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
+  height: 500px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 4px 12px gray;
 }
 
 .row {
-    flex: 1;
-    display: flex;
-    border: none;
+  flex: 1;
+  display: flex;
+  border: none;
 }
 
 .cell {
-    flex: 1;
-    border: 1px solid black;
-    background-color: white;
+  flex: 1;
+  border: 1px solid black;
+  background-color: white;
 }
 
 div {
-    margin: 0;
-    padding: 0;
-    border: 2px solid black;
+  margin: 0;
+  padding: 0;
 }
