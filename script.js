@@ -5,6 +5,7 @@ const maxSize = 100;
 let currentGridSize = defaultGridSize;
 const defaultBrushColor = "black";
 let currentBrushColor = defaultBrushColor;
+let canPaint = true;
 
 //Get references to html elements
 const gridContainer = document.getElementById("grid-container");
@@ -21,6 +22,7 @@ settingsContainer.addEventListener('click', (e) => {
     case 'rainbow-btn':
       break;
     case 'eraser-btn':
+      canPaint = !canPaint;
       break;
     case 'clear-btn':
       init(currentGridSize, currentBrushColor);
@@ -69,6 +71,11 @@ function showGridSize(textElem, size) {
 }
 
 function paintCell(cell) {
+  if(!canPaint) {
+    cell.removeAttribute('style');
+    return;
+  }
+
   if (cell.style.backgroundColor !== currentBrushColor) {
     cell.style.backgroundColor = currentBrushColor;
   }
@@ -81,7 +88,8 @@ function init(size = defaultGridSize, color = 'black') {
     currentGridSize = size;
   }
   currentBrushColor = color;
-
+  
+  canPaint = true;
   paintCell(currColorElem, currentBrushColor);
   showGridSize(currGridSizeElem, currentGridSize);
   createGrid(gridContainer, currentGridSize);

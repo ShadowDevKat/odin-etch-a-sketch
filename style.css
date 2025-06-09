@@ -72,6 +72,10 @@ body {
   opacity: 75%;
 }
 
+.settings-container>button:active {
+  transform: translateY(4px);
+}
+
 #grid-size {
   font-size: large;
   font-weight: 500;
