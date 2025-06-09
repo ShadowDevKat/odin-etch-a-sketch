@@ -24,14 +24,14 @@ body {
 .footer {
   height: 100px;
   width: 100%;
-  background-color: #dbdcff5f;
+  background-color: #dbdcff1f;
 }
 
 .heading {
   font-size: 56px;
   margin: 0;
   padding: 12px;
-  color: #2c3539;
+  color: #181c1e;
   text-align: center;
 }
 
@@ -58,8 +58,8 @@ body {
 }
 
 .settings-container>button {
-  font-size: medium;
-  font-weight: 400;
+  font-size: large;
+  font-weight: 500;
   height: 10%;
   width: 50%;
   background-color: #baffc9;
