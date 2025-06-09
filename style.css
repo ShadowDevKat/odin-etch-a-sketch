@@ -56,7 +56,6 @@ body {
 #current-color {
   height: 100px;
   width: 100px;
-  background-color: black;
 }
 
 .settings-container>button {
@@ -96,7 +95,7 @@ body {
 
 .cell {
   flex: 1;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   background-color: white;
 }
 
