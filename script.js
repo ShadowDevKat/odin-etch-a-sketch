@@ -3,15 +3,17 @@ const defaultGridSize = 16;
 const minSize = 1;
 const maxSize = 100;
 let currentGridSize = defaultGridSize;
-const defaultBrushColor = "black";
+const defaultBrushColor = "#2c3539";
 let currentBrushColor = defaultBrushColor;
 let canPaint = true;
+let isRainbow = false;
 
 //Get references to html elements
 const gridContainer = document.getElementById("grid-container");
 const settingsContainer = document.querySelector(".settings-container");
-const currColorElem = document.getElementById("current-color");
 const currGridSizeElem = document.getElementById("grid-size");
+const toggleButtons = document.querySelectorAll(".toggle");
+const defaultButton = document.getElementById('normal-btn');
 
 
 // Event listeners
@@ -19,10 +21,19 @@ settingsContainer.addEventListener('click', (e) => {
   let target = e.target;
 
   switch (target.id) {
+    case 'normal-btn':
+      isRainbow = false;
+      canPaint = true;
+      toggleMode(target);
+      break;
     case 'rainbow-btn':
+      isRainbow = true;
+      canPaint = true;
+      toggleMode(target);
       break;
     case 'eraser-btn':
-      canPaint = !canPaint;
+      canPaint = false;
+      toggleMode(target);
       break;
     case 'clear-btn':
       init(currentGridSize, currentBrushColor);
@@ -36,12 +47,23 @@ settingsContainer.addEventListener('click', (e) => {
   }
 });
 
-gridContainer.addEventListener('mousemove', (e) => {
+function toggleMode(target) {
+  const className = 'selected-option'
+  toggleButtons.forEach(x => x.classList.remove(className));
+  target.classList.add(className);
+}
+
+gridContainer.addEventListener('mouseover', (e) => {
   let target = e.target;
   if (target.classList.contains('cell')) {
-    paintCell(target);
+    if (!canPaint) {
+      unPaintCell(target);
+    }
+    else {
+      paintCell(target);
+    }
   }
-})
+});
 
 function createGrid(container, size) {
   function createDiv(parent, cssClass) {
@@ -70,27 +92,44 @@ function showGridSize(textElem, size) {
   textElem.textContent = `Grid: ${size} x ${size}`;
 }
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function getRandomCol() {
+  const rainbowColors = ['#e81416', '#ffa500', '#faeb36', '#79c314', '#487de7', '#4b369d', '#70369d'];
+  return rainbowColors[getRandomInt(rainbowColors.length)];
+}
+
 function paintCell(cell) {
-  if(!canPaint) {
-    cell.removeAttribute('style');
-    return;
+  if (isRainbow) {
+    currentBrushColor = getRandomCol();
+  }
+  else {
+    currentBrushColor = defaultBrushColor;
   }
 
   if (cell.style.backgroundColor !== currentBrushColor) {
     cell.style.backgroundColor = currentBrushColor;
   }
 }
-function init(size = defaultGridSize, color = 'black') {
+
+function unPaintCell(cell) {
+  cell.removeAttribute('style');
+}
+
+function init(size = defaultGridSize) {
   if (size < minSize || size > maxSize) {
     currentGridSize = defaultGridSize;
   }
   else {
     currentGridSize = size;
   }
-  currentBrushColor = color;
-  
+  currentBrushColor = defaultBrushColor;
   canPaint = true;
-  paintCell(currColorElem, currentBrushColor);
+  isRainbow = false;
+
+  toggleMode(defaultButton);
   showGridSize(currGridSizeElem, currentGridSize);
   createGrid(gridContainer, currentGridSize);
 }
